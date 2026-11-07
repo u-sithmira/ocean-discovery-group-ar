@@ -21,7 +21,7 @@
       renderer="antialias: true; colorManagement: true"
       arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
 
-      <a-assets timeout="10001">
+      <a-assets timeout="10000">
 
         <a-asset-item id="helmet-model"
           src="https://cdn.jsdelivr.net/gh/KhronosGroup/glTF-Sample-Assets@main/Models/DamagedHelmet/glTF-Binary/DamagedHelmet.glb"></a-asset-item>
@@ -45,12 +45,12 @@
           animation="property: position; to: 0.95 0.75 0; dir: alternate; loop: true; dur: 1200; easing: easeInOutSine">
         </a-cylinder>
 
-        <a-cone position="0 -0.02 0.8" radius-bottom="0.28" radius-top="0.05" height="0.6"
+        <a-cone position="0 -0.02 0.8" radius-bottom="0.30" radius-top="0.05" height="0.7"
           material="color: #F2C94C">
         </a-cone>
 
         <a-text value="Ocean Discovery" position="-1.25 1.1 0" rotation="-90 0 0"
-          align="center" color="#FFFFFF" width="3.3">
+          align="center" color="#FFFFFF" width="3.4">
         </a-text>
 
         <a-entity gltf-model="#helmet-model" position="0 0.18 -0.85" scale="0.42 0.42 0.42"
