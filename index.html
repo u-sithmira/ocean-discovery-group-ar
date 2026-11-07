@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ocean Discovery AR</title>
+
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js@3.4.7/aframe/build/aframe-ar.js"></script>
+
+    <link rel="stylesheet" href="assets/css/scene.css" />
+    <script src="assets/js/interactions.js"></script>
+    <script src="assets/js/status-banner.js"></script>
+  </head>
+  <body>
+    <div id="status-banner" role="status">Point your camera at the Hiro marker</div>
+
+    <a-scene
+      embedded
+      vr-mode-ui="enabled: false"
+      renderer="antialias: true; colorManagement: true"
+      arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
+
+      <a-assets timeout="10000">
+
+        <a-asset-item id="helmet-model"
+          src="https://cdn.jsdelivr.net/gh/KhronosGroup/glTF-Sample-Assets@main/Models/DamagedHelmet/glTF-Binary/DamagedHelmet.glb"></a-asset-item>
+
+      </a-assets>
+
+      <a-marker id="hiro-marker" preset="hiro">
+
+        <a-sphere id="colour-ball" class="clickable" position="-1 0.35 0" radius="0.28"
+          material="color: #2D9CDB; roughness: 0.35"
+          change-ball-colour
+          animation="property: rotation; to: 0 360 0; loop: true; dur: 2600; easing: linear">
+        </a-sphere>
+
+        <a-box id="treasure-chest" class="clickable" position="0 0.25 0" depth="0.45" height="0.35" width="0.55"
+          material="color: #A05A2C; metalness: 0.15" toggle-grow>
+        </a-box>
+
+        <a-cylinder position="0.95 0.25 0" radius="0.2" height="0.55"
+          material="color: #27AE60"
+          animation="property: position; to: 0.95 0.75 0; dir: alternate; loop: true; dur: 1200; easing: easeInOutSine">
+        </a-cylinder>
+
+        <a-cone position="0 -0.02 0.8" radius-bottom="0.28" radius-top="0.05" height="0.6"
+          material="color: #F2C94C">
+        </a-cone>
+
+        <a-text value="Ocean Discovery" position="-1.25 1.1 0" rotation="-90 0 0"
+          align="center" color="#FFFFFF" width="3.3">
+        </a-text>
+
+        <a-entity gltf-model="#helmet-model" position="0 0.18 -0.85" scale="0.42 0.42 0.42"
+          rotation="0 20 0">
+        </a-entity>
+      </a-marker>
+
+      <a-entity camera cursor="rayOrigin: mouse" raycaster="objects: .clickable"></a-entity>
+    </a-scene>
+
+  </body>
+</html>
